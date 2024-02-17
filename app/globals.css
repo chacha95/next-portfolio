@@ -3,31 +3,96 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --bg: white;
+  --textColor: black;
+  --softBg: #f0f0f0;
+  --softTextColor: #626262;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+main {
+  min-height: 100vh;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.dark {
+  --bg: #0f172a;
+  --textColor: #ddd;
+  --softBg: #1f273a;
+  --softTextColor: #a6a6a6;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.light {
+  --bg: white;
+  --textColor: black;
+  --softBg: #f0f0f0;
+  --softTextColor: #626262;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input,
+textarea,
+select {
+  @apply w-full rounded-sm border border-gray-200 px-1 py-2;
+  @apply mb-2;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  @apply border-blue-900;
+}
+
+h1 {
+  @apply mb-4 text-xl text-gray-800;
+}
+
+label {
+  @apply text-sm text-gray-600;
+}
+
+.btn-primary {
+  @apply rounded-lg bg-primary px-5 py-2.5 text-center font-medium text-white shadow-sm lg:hover:bg-green-900 lg:focus:outline-none;
+}
+
+.btn-red {
+  @apply rounded-lg bg-red-200 px-4 py-1 text-red-600 shadow-sm;
+}
+
+.btn-default {
+  @apply rounded-sm border border-gray-200 bg-white px-4 py-1 text-gray-800 shadow-sm;
+}
+
+table.basic {
+  @apply w-full rounded-sm bg-white shadow-md;
+}
+
+table.basic thead tr td,
+table.basic thead tr th {
+  @apply border-b border-gray-200 px-4 py-2 text-sm uppercase text-gray-600;
+}
+
+table.basic tr td {
+  @apply px-4 py-1;
+}
+
+table.basic a {
+  @apply mx-1 inline-flex items-center gap-1 rounded-sm px-4 py-1 text-sm;
+}
+
+.icon-primary {
+  @apply lg:transition-transform lg:duration-500 lg:hover:scale-105 lg:hover:fill-primary;
+}
+
+.project-card {
+  @apply flex flex-col m-3 rounded-xl w-full
+          transition duration-300 transform border border-gray-300
+          hover:scale-105
+          hover:shadow-lg
+          dark:border-gray-200/50
+          dark:hover:shadow-gray-400/40
+
+          hover:text-blue-600;
 }
